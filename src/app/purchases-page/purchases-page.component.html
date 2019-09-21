@@ -1,0 +1,16 @@
+<table class="table table-bordered col-md-10 ml-4 mt-4">
+    <thead class="table-header">
+        <tr>
+            <th class="width70" scope="col">Products</th>
+            <th class="width20" scope="col">Time</th>
+            <th class="width10" scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let purchase of purchases">
+            <td class="width70">{{purchase.products}}</td>
+            <td class="width20">{{purchase.date}}</td>
+            <td class="width10">{{purchase.price}}$</td>
+        </tr>
+    </tbody>
+</table>

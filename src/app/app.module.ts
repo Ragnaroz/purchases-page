@@ -1,16 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { NgModule, Injector } from '@angular/core';
+import { PurchasesPageComponent } from './purchases-page/purchases-page.component';
+import { createCustomElement } from '@angular/elements';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [PurchasesPageComponent],
+  imports: [BrowserModule],
+  entryComponents: [PurchasesPageComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(private injector: Injector) { }
+
+  ngDoBootstrap() {
+    const myCustomElement = createCustomElement(PurchasesPageComponent, { injector: this.injector });
+    customElements.define('purchases-page', myCustomElement);
+  }
+}
